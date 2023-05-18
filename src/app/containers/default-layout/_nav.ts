@@ -16,20 +16,71 @@ export const navItems: INavData[] = [
   },
   {
     name: 'User',
-    url: '/user',
     iconComponent: { name: 'cil-puzzle' },
     children: [
       {
         name: 'Add user',
-        url: '/user/add',
+        url: '/pages/user/addUser',
       },
       {
-        name: 'List user',
-        url: '/user/list',
+        name: 'Add responable',
+        url: '/pages/responsable/addResponsable',
+      },
+      {
+        name: 'List Superviseur',
+        url: '/pages/superviseur/ListSuperviseur',
+      },
+      {
+        name: 'List responsable local',
+        url: '/pages/responsable/listResponsable',
       },
     ],
   },
-
+  {
+    name: ' Add Pays',
+    iconComponent: { name: 'cil-puzzle' },
+    children: [
+      {
+        name: 'Add pays',
+        url: '/pages/pays/addPays',
+      },
+      {
+        name: 'List pays',
+        url: '/pages/pays/ListPays',
+      },
+     
+    ],
+  },
+  {
+    name: 'Local',
+    iconComponent: { name: 'cil-puzzle' },
+    children: [
+      {
+        name: 'Add local',
+        url: '/pages/local/addLocal',
+      },
+      {
+        name: 'List local',
+        url: '/pages/local/Listlocal',
+      },
+     
+    ],
+  },
+  {
+    name: 'Migration',
+    iconComponent: { name: 'cil-puzzle' },
+    children: [
+      {
+        name: 'Migration',
+        url: '',
+      },
+      {
+        name: 'List Migration',
+        url: '',
+      },
+     
+    ],
+  },
   {
     name: 'Profil',
     url: '/profil',

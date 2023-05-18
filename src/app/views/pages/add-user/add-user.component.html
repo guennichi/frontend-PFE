@@ -1,0 +1,27 @@
+
+  <div class="card">
+    <div class="card-header">
+      Add user
+    </div>
+    <div class="card-body">
+      <form [formGroup]="superviseur" >
+        <label for="">Nom:</label>
+        <input type="text" formControlName="Nom" class="form-control" placeholder="Nom" required>
+        <label for="">Prenom:</label>
+        <input type="text" formControlName="Prenom" class="form-control" placeholder="Prenom" required>
+        <label for="">Date_Naissence:</label>
+        <input type="date" formControlName="Date_Naissence" class="form-control" placeholder="Date_Naissence">
+        <label for="">Lieu:</label>
+        <input type="text" formControlName="Lieu" class="form-control" placeholder="Lieu">
+        <label for="">Pays:</label>
+        <input type="text" formControlName="Pays" class="form-control" placeholder="Pays">
+        <label for="">Email:</label>
+        <input type="email" formControlName="Email" class="form-control" placeholder="Email">
+        <label for="">Password:</label>
+        <input type="password" formControlName="Password" class="form-control" placeholder="Password">
+        <label for="">Role:</label>
+        <input type="text" formControlName="Role" class="form-control" placeholder="Role">
+        <button type="submit" type="button" class="btn btn-custom" (click)="ajouterSuperviseur()" >Valider</button>
+      </form>
+    </div>
+  </div>

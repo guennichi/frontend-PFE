@@ -1,0 +1,27 @@
+
+<div class="card">
+    <div class="card-header">
+      Add responsable local
+    </div>
+    <div class="card-body">
+      <form [formGroup]="addRespForm">
+        <label for="">Nom:</label>
+        <input type="text" formControlName="Nom" class="form-control" placeholder="Nom" required>
+        <label for="">Prenom:</label>
+        <input type="text" formControlName="Prenom" class="form-control" placeholder="Prenom" required>
+        <label for="">EmailRespo:</label>
+        <input type="email" formControlName="Email" class="form-control" placeholder="Email">
+        <label for="">num_passport:</label>
+        <input type="text" formControlName="num_passport" class="form-control" placeholder="num_passport">
+        <label for="">date_affectation:</label>
+        <input type="date" formControlName="date_affectation" class="form-control" placeholder="date_affectation">
+        <label for="">Pays:</label>
+        <input type="text" formControlName="Pays" class="form-control" placeholder="Pays">
+        <label for="">Locale:</label>
+        <input type="text" formControlName="Locale" class="form-control" placeholder="Locale">
+        <button type="submit" [disabled]="addRespForm.invalid" >Valider</button>
+      </form>
+    </div>
+  </div>
+
+

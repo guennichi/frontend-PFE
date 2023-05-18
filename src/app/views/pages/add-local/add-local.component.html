@@ -1,0 +1,20 @@
+
+<div class="card">
+    <div class="card-header">
+      Add Local
+    </div>
+    <div class="card-body">
+      <form [formGroup]="addLocalForm">
+        <label for="">Nom:</label>
+        <input type="text" formControlName="Nom" class="form-control" placeholder="Nom" required>
+        <label for="">Adresse:</label>
+        <input type="text" formControlName="Adresse" class="form-control" placeholder="Adresse" required>
+        <label for="">Pays:</label>
+        <input type="text" formControlName="Pays" class="form-control" placeholder="Pays">
+        <label for=""> Responsables:</label>
+        <input type="text" formControlName=" Responsables" class="form-control" placeholder=" Responsables">
+        
+        <button type="submit" [disabled]="addLocalForm.invalid" >Valider</button>
+      </form>
+    </div>
+  </div>

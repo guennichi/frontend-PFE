@@ -1,0 +1,63 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let superviseur of listSuperviseur">
+      <td>{{ superviseur.Nom }}</td>
+      <td>{{ superviseur.Prenom }}</td>
+      <td>{{ superviseur.Email }}</td>
+      <td>{{ superviseur.Role}}</td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="deleteSuperviseur(superviseur._id)">delete</button>
+        <button type="button" class="btn btn-success" (click)="showData(superviseur._id)" data-bs-toggle="modal"
+          data-bs-target="#updateModal">update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="updateModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update user</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="superviseurs">
+          <label for="">Nom:</label>
+          <input type="text" formControlName="Nom" class="form-control" placeholder="Nom" required>
+          <label for="">Prenom:</label>
+          <input type="text" formControlName="Prenom" class="form-control" placeholder="Prenom" required>
+          <label for="">Date_Naissence:</label>
+          <input type="date" formControlName="Date_Naissence" class="form-control" placeholder="Date_Naissence">
+          <label for="">Lieu:</label>
+          <input type="text" formControlName="Lieu" class="form-control" placeholder="Lieu">
+          <label for="">Pays:</label>
+          <input type="text" formControlName="Pays" class="form-control" placeholder="Pays">
+          <label for="">Email:</label>
+          <input type="email" formControlName="Email" class="form-control" placeholder="Email">
+          <label for="">Password:</label>
+          <input type="password" formControlName="Password" class="form-control" placeholder="Password">
+          <label for="">Role:</label>
+          <input type="text" formControlName="Role" class="form-control" placeholder="Role">
+          <button type="submit" type="button" class="btn btn-custom" (click)="updateSuperviseur()">Valider</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

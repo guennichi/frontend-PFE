@@ -1,0 +1,25 @@
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Pays</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let locale of locales">
+        <td>{{ locale.Nom }}</td>
+        <td>{{ locale.Adresse }}</td>
+        <td>{{ locale.Pays }}</td>
+        <td>{{ locale.Responsables}}</td>
+        <td>
+          <button  type="button"  class="btn btn-custom" (click)="deleteLocale(locale._id)">delete</button>
+          <button   type="button" class="btn btn-custom" (click)="updateLocale(locale._id, { nom: 'Nouveau nom', 
+          prenom: 'Nouveau prénom' })">update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

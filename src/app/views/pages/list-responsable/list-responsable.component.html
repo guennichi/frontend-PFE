@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>EmailRespo</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let responsable of responsables">
+        <td>{{ responsable.Nom }}</td>
+        <td>{{ responsable.Prenom }}</td>
+        <td>{{ responsable.EmailRespo }}</td>
+       
+        <td>
+          <button (click)="deleteResponsable(responsable.id)">delete</button>
+          <button (click)="updateResponsable(responsable.id, { nom: 'Nouveau nom', 
+          prenom: 'Nouveau prénom' })">update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

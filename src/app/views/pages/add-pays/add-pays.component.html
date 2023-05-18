@@ -1,0 +1,28 @@
+
+<div class="card">
+    <div class="card-header">
+      Add Pays
+    </div>
+    <div class="card-body">
+      <form [formGroup]="addPaysForm">
+        <label for="">nom:</label>
+        <input type="text" formControlName="nom" class="form-control" placeholder="nom" required>
+        <label for="">langue:</label>
+        <input type="text" formControlName="langue" class="form-control" placeholder="langue" required>
+        <label for="">continent:</label>
+        <input type="text" formControlName="continent" class="form-control" placeholder="continent">
+        <label for="">couleur_drapeau:</label>
+        <input type="text" formControlName="couleur_drapeau" class="form-control" placeholder="couleur_drapeau">
+        <label for="">Réligion:</label>
+        <input type="text" formControlName="Réligion" class="form-control" placeholder="Réligion">
+        <label for="">popilisation:</label>
+        <input type="text" formControlName="popilisation" class="form-control" placeholder="popilisation">
+        <label for="">taux_de_migration:</label>
+        <input type="text" formControlName="taux_de_migration" class="form-control" placeholder="taux_de_migration">
+        <label for="">Locales:</label>
+        <input type="text" formControlName="Locales" class="form-control" placeholder="Locales">
+        <button type="submit" [disabled]="addPaysForm.invalid" >Valider</button>
+      </form>
+    </div>
+  </div>
+  
