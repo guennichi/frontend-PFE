@@ -23,16 +23,8 @@ export const navItems: INavData[] = [
         url: '/pages/user/addUser',
       },
       {
-        name: 'Add responable',
-        url: '/pages/responsable/addResponsable',
-      },
-      {
-        name: 'List Superviseur',
-        url: '/pages/superviseur/ListSuperviseur',
-      },
-      {
-        name: 'List responsable local',
-        url: '/pages/responsable/listResponsable',
+        name: 'Users list',
+        url: '/pages/user',
       },
     ],
   },
@@ -48,7 +40,6 @@ export const navItems: INavData[] = [
         name: 'List pays',
         url: '/pages/pays/ListPays',
       },
-     
     ],
   },
   {
@@ -63,7 +54,6 @@ export const navItems: INavData[] = [
         name: 'List local',
         url: '/pages/local/Listlocal',
       },
-     
     ],
   },
   {
@@ -78,7 +68,6 @@ export const navItems: INavData[] = [
         name: 'List Migration',
         url: '',
       },
-     
     ],
   },
   {

@@ -18,91 +18,90 @@ const routes: Routes = [
     path: '404',
     component: Page404Component,
     data: {
-      title: 'Page 404'
-    }
+      title: 'Page 404',
+    },
   },
   {
     path: '500',
     component: Page500Component,
     data: {
-      title: 'Page 500'
-    }
+      title: 'Page 500',
+    },
   },
   {
     path: 'login',
     component: LoginComponent,
     data: {
-      title: 'Login Page'
-    }
+      title: 'Login Page',
+    },
   },
   {
     path: 'register',
     component: RegisterComponent,
     data: {
-      title: 'Register Page'
-    }
+      title: 'Register Page',
+    },
   },
   {
     path: 'user/addUser',
     component: AddUserComponent,
     data: {
-      title: 'Add user Page'
-    }
+      title: 'Add user Page',
+    },
+  },
+  {
+    path: 'user',
+    component: ListSuperviseurComponent,
+    data: {
+      title: 'List user',
+    },
   },
   {
     path: 'local/addLocal',
     component: AddLocalComponent,
     data: {
-      title: 'Add local Page'
-    }
-  },
-  {
-    path: 'pays/addPays',
-    component: AddPaysComponent,
-    data: {
-      title: 'Add paysPage'
-    }
-  },
-  {
-    path: 'responsable/addResponsable',
-    component: AddResponsableComponent,
-    data: {
-      title: 'Add responsablePage'
-    }
-  },
-  {
-    path: 'responsable/listResponsable',
-    component: ListResponsableComponent,
-    data: {
-      title: 'list responsablePage'
-    }
-  },
-  {
-    path: 'superviseur/ListSuperviseur',
-    component: ListSuperviseurComponent,
-    data: {
-      title: 'List superviseurPage'
-    }
+      title: 'Add local Page',
+    },
   },
   {
     path: 'local/Listlocal',
     component: ListLocalComponent,
     data: {
-      title: 'List localPage'
-    }
+      title: 'List localPage',
+    },
+  },
+  {
+    path: 'responsable/addResponsable',
+    component: AddResponsableComponent,
+    data: {
+      title: 'Add responsablePage',
+    },
+  },
+  {
+    path: 'responsable/listResponsable',
+    component: ListResponsableComponent,
+    data: {
+      title: 'list responsablePage',
+    },
+  },
+  {
+    path: 'pays/addPays',
+    component: AddPaysComponent,
+    data: {
+      title: 'Add paysPage',
+    },
   },
   {
     path: 'pays/ListPays',
     component: ListPaysComponent,
     data: {
-      title: 'List paysPage'
-    }
+      title: 'List paysPage',
+    },
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PagesRoutingModule {
-}
+export class PagesRoutingModule {}
