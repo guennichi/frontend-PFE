@@ -10,6 +10,9 @@ export class LocalService {
 
   constructor(private http: HttpClient) { }
 
+
+
+
   getAllLocals(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }

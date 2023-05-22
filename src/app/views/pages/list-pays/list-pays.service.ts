@@ -6,12 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ListPaysService {
-  private apiUrl = 'http://localhost:4000/api/v1/user'; // Remplacez par l'URL de votre backend
+  private apiUrl = 'http://localhost:4000/api/v1/pays'; // Remplacez par l'URL de votre backend
 
   constructor(private http: HttpClient) { }
 
   getAllPays(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
+  }
+  getOne(id: any): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/' + id);
   }
 
   deletePays(paysId: any): Observable<any> {
@@ -21,6 +24,9 @@ export class ListPaysService {
 
   updatePays(paysId: any, paysData: any): Observable<any> {
     const url = `${this.apiUrl}/${paysId}`;
-    return this.http.put<any>(url,paysData);
+    return this.http.put<any>(url, paysData);
+  }
+  ajouterPays(pays: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/pays`, pays);
   }
 }
