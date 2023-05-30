@@ -33,11 +33,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/charts/charts.module').then((m) => m.ChartsModule),
       },
-      {
-        path: 'icons',
-        loadChildren: () =>
-          import('./views/icons/icons.module').then((m) => m.IconsModule),
-      },
+
       {
         path: 'widgets',
         loadChildren: () =>
@@ -92,4 +88,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

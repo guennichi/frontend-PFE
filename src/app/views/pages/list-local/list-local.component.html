@@ -1,25 +1,57 @@
-
 <table class="table">
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Pays</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <tr *ngFor="let locale of locales">
-        <td>{{ locale.Nom }}</td>
-        <td>{{ locale.Adresse }}</td>
-        <td>{{ locale.Pays }}</td>
-        <td>{{ locale.Responsables}}</td>
-        <td>
-          <button  type="button"  class="btn btn-custom" (click)="deleteLocale(locale._id)">delete</button>
-          <button   type="button" class="btn btn-custom" (click)="updateLocale(locale._id, { nom: 'Nouveau nom', 
-          prenom: 'Nouveau prénom' })">update</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Pays</th>
+      <th>Adresse</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let local of Listlocales">
+      <td>{{ local.Nom }}</td>
+      <td>{{ local.Pays }}</td>
+      <td>{{ local.Adresse }}</td>
+
+      <td>
+        <button type="button" class="btn btn-danger" (click)="deleteLocale(local._id)">delete</button>
+        <button type="button" class="btn btn-success" (click)="showData(local._id)" data-bs-toggle="modal"
+          data-bs-target="#updateModal">update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="modal fade" id="updateModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update local</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="locales">
+          <label for="">Nom:</label>
+          <input type="text" formControlName="Nom" class="form-control" placeholder="Nom" required>
+          <label for="">Adresse:</label>
+          <input type="text" formControlName="Adresse" class="form-control" placeholder="Adresse" required>
+          <label for="">Pays:</label>
+          <select type="text" formControlName="Pays" class="form-control" placeholder="Pays">
+            <option *ngFor="let pay of pays" value="pays._id">{{pay.nom}}</option>
+          </select>
+          <label for=""> Responsables:</label>
+          <select type="text" formControlName=" Responsables" class="form-control" placeholder=" Responsables">
+            <option *ngFor="let responsable of responsable" value="pays._id">{{responsable.Nom}}</option>
+          </select>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="closebutton" (click)="updateLocal()">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>

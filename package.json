@@ -35,10 +35,13 @@
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-angular": "~4.4.7",
     "@coreui/utils": "^2.0.1",
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "bootstrap": "^5.2.3",
     "chart.js": "^3.9.1",
+    "material-icons": "^1.13.7",
     "ngx-perfect-scrollbar": "^10.1.1",
     "ngx-toastr": "^17.0.2",
+    "primeng": "^16.0.0-rc.2",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

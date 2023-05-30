@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import {
   HashLocationStrategy,
   LocationStrategy,
-  PathLocationStrategy,
 } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
   PerfectScrollbarModule,
+
 } from 'ngx-perfect-scrollbar';
 
 // Import routing module
@@ -46,10 +48,13 @@ import {
   SidebarModule,
   TabsModule,
   UtilitiesModule,
+
+
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -63,6 +68,7 @@ const APP_CONTAINERS = [
 
 @NgModule({
   declarations: [AppComponent, ...APP_CONTAINERS],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -91,7 +97,11 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     HttpClientModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(),
+    FormsModule,
+    // ToastrModule added
+
+
   ],
   providers: [
     {
@@ -107,4 +117,4 @@ const APP_CONTAINERS = [
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

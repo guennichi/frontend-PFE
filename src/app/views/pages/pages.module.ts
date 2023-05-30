@@ -19,6 +19,7 @@ import { ListLocalComponent } from './list-local/list-local.component';
 import { ListMigrationComponent } from './list-migration/list-migration.component';
 import { AddResponsableComponent } from './add-responsable/add-responsable.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListFileComponent } from './list-file/list-file.component';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     ListPaysComponent,
     ListLocalComponent,
     ListMigrationComponent,
-    AddResponsableComponent
+    AddResponsableComponent,
+    ListFileComponent
+
   ],
   imports: [
     CommonModule,
@@ -47,8 +50,12 @@ import { HttpClientModule } from '@angular/common/http';
     FormModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-    
+    HttpClientModule,
+
+
+
+
+
   ]
 })
 export class PagesModule {

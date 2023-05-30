@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { BadgeModule, CardModule, GridModule } from '@coreui/angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
-
+import { SearchPipe } from '../charts/search.pipe';
 import { ChartsComponent } from './charts.component';
 import { ChartsRoutingModule } from './charts-routing.module';
 import { DocsComponentsModule } from '@docs-components/docs-components.module';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ChartsComponent],
+  declarations: [ChartsComponent, SearchPipe],
   imports: [
     CommonModule,
     ChartsRoutingModule,
@@ -17,7 +19,9 @@ import { DocsComponentsModule } from '@docs-components/docs-components.module';
     CardModule,
     GridModule,
     BadgeModule,
-    DocsComponentsModule
+    DocsComponentsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ChartsModule {

@@ -26,7 +26,7 @@ export class ListPaysService {
     const url = `${this.apiUrl}/${paysId}`;
     return this.http.put<any>(url, paysData);
   }
-  ajouterPays(pays: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/pays`, pays);
+  ajouterPays(Pays: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, Pays);
   }
 }

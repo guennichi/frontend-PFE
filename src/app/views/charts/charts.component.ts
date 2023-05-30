@@ -1,31 +1,77 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+import { MigrationService } from '../pages/Services/migration.service';
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.scss']
+
 })
-export class ChartsComponent {
+export class ChartsComponent implements OnInit {
+  MigrationData: any[] = []
+  Nationality: any[] = []
+  NumberOfMigrants: any[] = []
+  Migrants: any[] = []
+  list: any
+  chartPieData: any
+  total: any
+  constructor(private migrationService: MigrationService) {
 
-  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  }
+  ngOnInit(): void {
+    this.renderListOfMigration()
 
-  chartBarData = {
-    labels: [...this.months].slice(0, 7),
-    datasets: [
-      {
-        label: 'GitHub Commits',
-        backgroundColor: '#f87979',
-        data: [40, 20, 12, 39, 17, 42, 79]
+
+  }
+  renderListOfMigration() {
+    this.migrationService.getAllMigrations().subscribe((result: any) => {
+      this.MigrationData = result.data;
+      this.total = result.data.slice(-1)
+      if (this.MigrationData) {
+        for (let i = 0; i < this.MigrationData.length - 1; i++) {
+          this.Nationality.push(this.MigrationData[i].Nationality)
+          this.NumberOfMigrants.push(Number(this.MigrationData[i].NumberOfMigrants))
+          this.Migrants.push(this.MigrationData[i].Migrants * 100)
+        }
+        this.list = {
+          labels: this.Nationality.slice(0, 10),
+          datasets: [
+            {
+              label: 'Number of Migrants',
+              backgroundColor: '#f87979',
+              data: this.NumberOfMigrants.slice(0, 10)
+            }
+          ]
+        };
+
       }
-    ]
-  };
+
+    }, (error: any) => {
+      console.log(error);
+
+    });
+
+    this.renderChartPie()
+  }
+  renderChartbar() {
+    this.list = {
+      labels: this.Nationality.slice(0, 10),
+      datasets: [
+        {
+          label: 'Number of Migrants',
+          backgroundColor: '#f87979',
+          data: this.NumberOfMigrants.slice(0, 10)
+        }
+      ]
+    };
+  }
 
   // chartBarOptions = {
   //   maintainAspectRatio: false,
   // };
 
   chartLineData = {
-    labels: [...this.months].slice(0, 7),
+    labels: [].slice(0, 7),
     datasets: [
       {
         label: 'My First dataset',
@@ -33,7 +79,7 @@ export class ChartsComponent {
         borderColor: 'rgba(220, 220, 220, 1)',
         pointBackgroundColor: 'rgba(220, 220, 220, 1)',
         pointBorderColor: '#fff',
-        data: [this.randomData, this.randomData, this.randomData, this.randomData, this.randomData, this.randomData, this.randomData]
+        data: []
       },
       {
         label: 'My Second dataset',
@@ -41,7 +87,7 @@ export class ChartsComponent {
         borderColor: 'rgba(151, 187, 205, 1)',
         pointBackgroundColor: 'rgba(151, 187, 205, 1)',
         pointBorderColor: '#fff',
-        data: [this.randomData, this.randomData, this.randomData, this.randomData, this.randomData, this.randomData, this.randomData]
+        data: []
       }
     ]
   };
@@ -51,11 +97,11 @@ export class ChartsComponent {
   };
 
   chartDoughnutData = {
-    labels: ['VueJs', 'EmberJs', 'ReactJs', 'Angular'],
+    labels: this.Nationality.slice(0, 4),
     datasets: [
       {
         backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-        data: [40, 20, 80, 10]
+        data: this.Migrants.slice(0, 4)
       }
     ]
   };
@@ -66,18 +112,18 @@ export class ChartsComponent {
   //   maintainAspectRatio: false,
   //   radius: '100%'
   // };
-
-  chartPieData = {
-    labels: ['Red', 'Green', 'Yellow'],
-    datasets: [
-      {
-        data: [300, 50, 100],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-      }
-    ]
-  };
-
+  renderChartPie() {
+    this.chartPieData = {
+      labels: this.Nationality.slice(0, 3),
+      datasets: [
+        {
+          data: this.Migrants.slice(0, 3),
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+          hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+        }
+      ]
+    };
+  }
   // chartPieOptions = {
   //   aspectRatio: 1,
   //   responsive: true,

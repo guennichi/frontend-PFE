@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  constructor(private authService: AuthService, private toast: ToastrService) {}
+  constructor(private authService: AuthService, private toast: ToastrService, private router: Router) { }
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       Email: new FormControl('', [Validators.required]),
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.Login(this.loginForm.value).subscribe(
       (response: any) => {
+        this.router.navigateByUrl('/dashboard')
         this.toast.success(response.message);
       },
       (error: any) => {

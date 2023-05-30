@@ -12,6 +12,7 @@ import { AddPaysComponent } from './add-pays/add-pays.component';
 import { ListResponsableComponent } from './list-responsable/list-responsable.component';
 import { ListLocalComponent } from './list-local/list-local.component';
 import { ListPaysComponent } from './list-pays/list-pays.component';
+import { ListFileComponent } from './list-file/list-file.component';
 
 const routes: Routes = [
   {
@@ -98,10 +99,17 @@ const routes: Routes = [
       title: 'List paysPage',
     },
   },
+  {
+    path: 'file/listfile',
+    component: ListFileComponent,
+    data: {
+      title: 'List file',
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule {}
+export class PagesRoutingModule { }

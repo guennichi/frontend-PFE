@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ListPaysService } from '../Services/list-pays.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-pays',
@@ -10,9 +11,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ListPaysComponent {
   listPays: any[] = [];
   pays!: FormGroup; // Supposons que votre liste de payss est stockée dans cette variable
-  idSup: any; // Supposons que votre liste de pays est stockée dans cette variable
+  idPay: any; // Supposons que votre liste de pays est stockée dans cette variable
 
-  constructor(private paysService: ListPaysService) {}
+  constructor(private paysService: ListPaysService, private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.pays = new FormGroup({
@@ -20,15 +21,14 @@ export class ListPaysComponent {
       langue: new FormControl('', [Validators.required]),
       continent: new FormControl('', [Validators.required]),
       couleur_drapeau: new FormControl('', [Validators.required]),
-      Réligion: new FormControl('', [Validators.required]),
-      popilisation: new FormControl('', [
-        Validators.required,
-        Validators.email,
-      ]),
+      Religion: new FormControl('', [Validators.required]),
+      populisation: new FormControl('', [Validators.required]),
       taux_de_migration: new FormControl('', [Validators.required]),
-      Locales: new FormControl('', [Validators.required]),
+      // Locales: new FormControl('', [Validators.required]),
     });
+
     this.getPays();
+
   }
 
   getPays(): void {
@@ -36,36 +36,49 @@ export class ListPaysComponent {
       (response: any) => {
         console.log(response);
 
-        this.pays = response.user;
+        this.listPays = response;
       },
       (error: any) => {
         console.log(error);
       }
     );
   }
+
 
   deletePays(paysId: number): void {
-    this.paysService.deletePays(paysId).subscribe(() => {
-      this.getPays(); // Met à jour la liste après la suppression
-    });
-  }
-  showData(id: any) {
-    this.idSup = id;
-    this.paysService.getOne(id).subscribe(
+    this.paysService.deletePays(paysId).subscribe(
       (response: any) => {
-        console.log(response.user);
-
-        this.pays.patchValue(response.user);
+        this.toast.success(response.message);
+        this.ngOnInit(); // Met à jour la liste après la suppression
       },
       (error: any) => {
-        console.log(error);
+        this.toast.error(error.message);
       }
     );
   }
 
+  showData(id: any) {
+    this.idPay = id;
+    this.paysService.getOne(id).subscribe(
+      (response: any) => {
+        this.pays.patchValue(response);
+        this.toast.info('Data recuperé');
+      },
+      (error: any) => {
+        this.toast.error(error.message);
+      }
+    );
+  }
   updatePays() {
-    this.paysService.updatePays(this.idSup, this.pays.value).subscribe(() => {
-      this.getPays(); // Met à jour la liste après la mise à jour
-    });
+    this.paysService
+      .updatePays(this.idPay, this.pays.value)
+      .subscribe(
+        (response: any) => {
+          window.location.reload();
+        },
+        (error: any) => {
+          this.toast.error(error.message);
+        }
+      );
   }
 }

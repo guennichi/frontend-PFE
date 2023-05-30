@@ -1,24 +1,60 @@
 import { Component } from '@angular/core';
 import { ResponsableService } from '../Services/responsable.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ListPaysService } from '../Services/list-pays.service';
+import { LocalService } from '../Services/local.service';
 @Component({
   selector: 'app-list-responsable',
   templateUrl: './list-responsable.component.html',
   styleUrls: ['./list-responsable.component.scss'],
 })
 export class ListResponsableComponent {
-  responsables!: any[]; // Supposons que votre liste de superviseurs est stockée dans cette variable
+  listResponsable: any[] = [];
+  responsables!: FormGroup; // Supposons que votre liste de superviseurs est stockée dans cette variable
+  idResp: any;
+  pays: any[] = []
+  locale: any[] = []
 
-  constructor(private responsableService: ResponsableService) {}
+  constructor(private responsableService: ResponsableService,
+    private paysService: ListPaysService,
+    private localeService: LocalService,
+    private toast: ToastrService) { }
 
   ngOnInit(): void {
+    this.responsables = new FormGroup({
+      Nom: new FormControl('', [Validators.required]),
+      Prenom: new FormControl('', [Validators.required]),
+      EmailRespo: new FormControl('', [Validators.required, Validators.email]),
+      num_passport: new FormControl('', [Validators.required]),
+      date_affectation: new FormControl('', [Validators.required]),
+      Pays: new FormControl('', [Validators.required]),
+      Locale: new FormControl('', [Validators.required]),
+    });
     this.getResponsables();
+    this.paysService.getAllPays().subscribe((response: any) => {
+      this.pays = response
+    },
+      (error) => {
+        console.log(error);
+
+        // Gérez les erreurs de manière appropriée (affichage d'un message d'erreur, journalisation, etc.)
+      })
+    this.localeService.getAllLocals().subscribe((response: any) => {
+      this.locale = response
+    },
+      (error) => {
+        console.log(error);
+
+        // Gérez les erreurs de manière appropriée (affichage d'un message d'erreur, journalisation, etc.)
+      })
+
   }
 
   getResponsables(): void {
     this.responsableService.getAllResponsables().subscribe(
       (response: any) => {
-        console.log(response);
-        this.responsables = response;
+        this.listResponsable = response;
       },
       (error: any) => {
         console.log(error);
@@ -31,12 +67,28 @@ export class ListResponsableComponent {
       this.getResponsables(); // Met à jour la liste après la suppression
     });
   }
-
-  updateResponsable(responsableId: number, responsableData: any): void {
+  showData(id: any) {
+    this.idResp = id;
+    this.responsableService.getOne(id).subscribe(
+      (response: any) => {
+        this.responsables.patchValue(response);
+        this.toast.info('Data recuperé');
+      },
+      (error: any) => {
+        this.toast.error(error.message);
+      }
+    );
+  }
+  updateResponsable() {
     this.responsableService
-      .updateResponsable(responsableId, responsableData)
-      .subscribe(() => {
-        this.getResponsables(); // Met à jour la liste après la mise à jour
-      });
+      .updateResponsable(this.idResp, this.responsables.value)
+      .subscribe(
+        (response: any) => {
+          window.location.reload();
+        },
+        (error) => {
+          this.toast.error(error.message);
+        }
+      );
   }
 }

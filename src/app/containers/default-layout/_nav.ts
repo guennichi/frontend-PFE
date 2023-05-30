@@ -29,7 +29,7 @@ export const navItems: INavData[] = [
     ],
   },
   {
-    name: ' Add Pays',
+    name: '  Pays',
     iconComponent: { name: 'cil-puzzle' },
     children: [
       {
@@ -57,23 +57,32 @@ export const navItems: INavData[] = [
     ],
   },
   {
+    name: 'Responsable',
+    iconComponent: { name: 'cil-puzzle' },
+    children: [
+      {
+        name: 'Add Responsable',
+        url: '/pages/responsable/addResponsable',
+      },
+      {
+        name: 'List Responsable',
+        url: '/pages/responsable/listResponsable',
+      },
+    ],
+  },
+
+  {
     name: 'Migration',
     iconComponent: { name: 'cil-puzzle' },
     children: [
       {
-        name: 'Migration',
-        url: '',
+        name: 'A propos de migration',
+        url: '/charts',
       },
       {
-        name: 'List Migration',
-        url: '',
+        name: 'Migration data file',
+        url: 'pages/file/listfile',
       },
     ],
-  },
-  {
-    name: 'Profil',
-    url: '/profil',
-    linkProps: { fragment: 'someAnchor' },
-    iconComponent: { name: 'cil-user' },
   },
 ];
