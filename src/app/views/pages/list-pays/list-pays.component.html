@@ -1,63 +1,70 @@
-<table class="table">
-  <thead>
-    <tr>
+<div class="card">
+  <div class="card-header">
+    LIST PAYS
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
 
-      <th>continent</th>
-      <th>Nom</th>
-      <th>populisation</th>
-      <th>taux_de_migration </th>
-      <th>Action</th>
-    </tr>
-  </thead>
+        <th>continent</th>
+        <th>Nom</th>
+        <th>populisation</th>
+        <th>taux_de_migration </th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <tr *ngFor="let pays of listPays">
+    <tbody>
+      <tr *ngFor="let pays of listPays">
 
-      <td>{{ pays.continent }}</td>
-      <td>{{ pays.nom }}</td>
-      <td>{{ pays.populisation }} millions</td>
-      <td>{{ pays.taux_de_migration}} %</td>
+        <td>{{ pays.continent }}</td>
+        <td>{{ pays.nom }}</td>
+        <td>{{ pays.populisation }} millions</td>
+        <td>{{ pays.taux_de_migration}} %</td>
 
-      <td>
-        <button type="button" class="btn btn-danger" (click)="deletePays(pays._id)">delete</button>
-        <button type="button" class="btn btn-success" (click)="showData(pays._id)" data-bs-toggle="modal"
-          data-bs-target="#updateModal">update</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <td>
+          <button type="button" class="btn btn-danger me-2" (click)="deletePays(pays._id)"><i
+              class="fa-solid fa-trash text-white"></i></button>
+          <button type="button" class="btn btn-success" (click)="showData(pays._id)" data-bs-toggle="modal"
+            data-bs-target="#updateModal"><i class="fa-regular fa-pen-to-square"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<div class="modal fade" id="updateModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Update pays</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+  <div class="modal fade" id="updateModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Update pays</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
 
-        <form [formGroup]="pays">
-          <label for="">nom:</label>
-          <input type="text" formControlName="nom" class="form-control" placeholder="nom" required>
-          <label for="">langue:</label>
-          <input type="text" formControlName="langue" class="form-control" placeholder="langue" required>
-          <label for="">continent:</label>
-          <input type="text" formControlName="continent" class="form-control" placeholder="continent">
-          <label for="">couleur_drapeau:</label>
-          <input type="text" formControlName="couleur_drapeau" class="form-control" placeholder="couleur_drapeau">
-          <label for="">Religion:</label>
-          <input type="text" formControlName="Religion" class="form-control" placeholder="Réligion">
-          <label for="">populisation:</label>
-          <input type="number" formControlName="populisation" class="form-control" placeholder="populisation">
-          <label for="">taux_de_migration:</label>
-          <input type="number" formControlName="taux_de_migration" class="form-control" placeholder="taux_de_migration">
+          <form [formGroup]="pays">
+            <label for="">nom:</label>
+            <input type="text" formControlName="nom" class="form-control" placeholder="nom" required>
+            <label for="">langue:</label>
+            <input type="text" formControlName="langue" class="form-control" placeholder="langue" required>
+            <label for="">continent:</label>
+            <input type="text" formControlName="continent" class="form-control" placeholder="continent">
+            <label for="">couleur_drapeau:</label>
+            <input type="text" formControlName="couleur_drapeau" class="form-control" placeholder="couleur_drapeau">
+            <label for="">Religion:</label>
+            <input type="text" formControlName="Religion" class="form-control" placeholder="Réligion">
+            <label for="">populisation:</label>
+            <input type="number" formControlName="populisation" class="form-control" placeholder="populisation">
+            <label for="">taux_de_migration:</label>
+            <input type="number" formControlName="taux_de_migration" class="form-control"
+              placeholder="taux_de_migration">
 
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="closebutton" (click)="updatePays()">Save
-          changes</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="closebutton" (click)="updatePays()">Save
+            changes</button>
+        </div>
       </div>
     </div>
   </div>

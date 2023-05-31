@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class SuperviseurService {
   private apiUrl = 'http://localhost:4000/api/v1/user'; // Remplacez par l'URL de votre backend
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
@@ -18,9 +18,9 @@ export class SuperviseurService {
     return this.http.get<any>(this.apiUrl + '/' + id);
   }
 
-  deleteUser(UserId: any): Observable<any> {
-    const url = `${this.apiUrl}/${UserId}`;
-    return this.http.delete<any>(url);
+  statusChange(UserId: any): Observable<any> {
+    const url = `${this.apiUrl}Status/${UserId}`;
+    return this.http.put<any>(url, null);
   }
 
   updateUser(UserId: any, UserData: any): Observable<any> {

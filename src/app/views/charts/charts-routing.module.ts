@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: ChartsComponent,
     data: {
-      title: 'Charts',
+      title: 'Statistics',
     },
   },
 ];
@@ -17,5 +17,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ChartsRoutingModule {}
+export class ChartsRoutingModule { }
 

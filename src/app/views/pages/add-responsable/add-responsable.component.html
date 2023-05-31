@@ -20,6 +20,7 @@
       <select type="text" formControlName="Locale" class="form-control" placeholder="Locale">
         <option *ngFor="let local of locale" value="{{local._id}}">{{local.Nom}}</option>
       </select>
+
       <button type="button" class="btn btn-success" (click)="ajouterResponsable()">Valider</button>
     </form>
     {{responsable.value | json}}

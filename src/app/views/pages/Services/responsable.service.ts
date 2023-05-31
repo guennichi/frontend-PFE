@@ -30,4 +30,8 @@ export class ResponsableService {
   ajouterResponsable(Responsable: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, Responsable);
   }
+  statusChange(UserId: any): Observable<any> {
+    const url = `${this.apiUrl}Status/${UserId}`;
+    return this.http.put<any>(url, null);
+  }
 }

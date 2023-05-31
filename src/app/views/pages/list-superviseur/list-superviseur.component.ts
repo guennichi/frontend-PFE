@@ -15,7 +15,7 @@ export class ListSuperviseurComponent {
   constructor(
     private superviseurService: SuperviseurService,
     private toast: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.superviseurs = new FormGroup({
@@ -27,6 +27,7 @@ export class ListSuperviseurComponent {
       Email: new FormControl('', [Validators.required]),
       Password: new FormControl('', [Validators.required]),
       Role: new FormControl('', [Validators.required]),
+      Status: new FormControl('', [Validators.required]),
     });
     this.getSuperviseurs();
   }
@@ -42,10 +43,10 @@ export class ListSuperviseurComponent {
     );
   }
 
-  deleteSuperviseur(superviseurId: number): void {
-    this.superviseurService.deleteUser(superviseurId).subscribe(
+  changeStatus(superviseurId: number): void {
+    this.superviseurService.statusChange(superviseurId).subscribe(
       (response: any) => {
-        this.toast.success(response.message);
+        // this.toast.success(response.message);
         this.ngOnInit(); // Met à jour la liste après la suppression
       },
       (error: any) => {

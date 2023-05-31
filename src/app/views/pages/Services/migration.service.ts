@@ -10,7 +10,9 @@ export class MigrationService {
 
   constructor(private http: HttpClient) { }
 
-
+  addMigrationFile(data: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, data);
+  }
 
 
   getAllMigrations(): Observable<any> {

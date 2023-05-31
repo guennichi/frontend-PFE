@@ -1,61 +1,76 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Prénom</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let superviseur of listSuperviseur">
-      <td>{{ superviseur.Nom }}</td>
-      <td>{{ superviseur.Prenom }}</td>
-      <td>{{ superviseur.Email }}</td>
-      <td>{{ superviseur.Role}}</td>
-      <td>
-        <button type="button" class="btn btn-danger" (click)="deleteSuperviseur(superviseur._id)">delete</button>
-        <button type="button" class="btn btn-success" (click)="showData(superviseur._id)" data-bs-toggle="modal"
-          data-bs-target="#updateModal">update</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="card">
+  <div class="card-header">
+    LIST SUPERVISEUR
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let superviseur of listSuperviseur">
+        <td>{{ superviseur.Nom }}</td>
+        <td>{{ superviseur.Prenom }}</td>
+        <td>{{ superviseur.Email }}</td>
+        <td>{{ superviseur.Role}}</td>
+        <td>{{ superviseur.Status ==true ? 'Active': 'Inactive'}}</td>
+        <td class="d-flex align-items-center">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" (change)="changeStatus(superviseur._id)" role="switch"
+              id="flexSwitchCheckChecked" [checked]="superviseur.Status ? true: false">
+          </div>
+          <button type="button" class="btn btn-success" (click)="showData(superviseur._id)" data-bs-toggle="modal"
+            data-bs-target="#updateModal"><i class="fa-regular fa-pen-to-square"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 
-<!-- Modal -->
-<div class="modal fade" id="updateModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Update user</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+  <!-- Modal -->
+  <div class="modal fade" id="updateModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Update user</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
 
-        <form [formGroup]="superviseurs">
-          <label for="">Nom:</label>
-          <input type="text" formControlName="Nom" class="form-control" placeholder="Nom" required>
-          <label for="">Prenom:</label>
-          <input type="text" formControlName="Prenom" class="form-control" placeholder="Prenom" required>
-          <label for="">Date_Naissence:</label>
-          <input type="date" formControlName="Date_Naissence" class="form-control" placeholder="Date_Naissence">
-          <label for="">Lieu:</label>
-          <input type="text" formControlName="Lieu" class="form-control" placeholder="Lieu">
-          <label for="">Pays:</label>
-          <input type="text" formControlName="Pays" class="form-control" placeholder="Pays">
-          <label for="">Email:</label>
-          <input type="email" formControlName="Email" class="form-control" placeholder="Email">
-          <label for="">Password:</label>
-          <input type="password" formControlName="Password" class="form-control" placeholder="Password">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="closebutton" (click)="updateSuperviseur()">Save
-          changes</button>
+          <form [formGroup]="superviseurs">
+            <label for="">Nom:</label>
+            <input type="text" formControlName="Nom" class="form-control" placeholder="Nom" required>
+            <label for="">Prenom:</label>
+            <input type="text" formControlName="Prenom" class="form-control" placeholder="Prenom" required>
+            <label for="">Date_Naissence:</label>
+            <input type="date" formControlName="Date_Naissence" class="form-control" placeholder="Date_Naissence">
+            <label for="">Lieu:</label>
+            <input type="text" formControlName="Lieu" class="form-control" placeholder="Lieu">
+            <label for="">Pays:</label>
+            <input type="text" formControlName="Pays" class="form-control" placeholder="Pays">
+            <label for="">Email:</label>
+            <input type="email" formControlName="Email" class="form-control" placeholder="Email">
+            <label for="">Status:</label>
+            <select type="text" formControlName="Status" class="form-control" placeholder="Status">
+              <option value="" disabled>Choose an option</option>
+              <option value="actif">Actif</option>
+              <option value="non-actif">Non actif</option>
+            </select>
+            <label for="">Password:</label>
+            <input type="password" formControlName="Password" class="form-control" placeholder="Password">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="closebutton" (click)="updateSuperviseur()">Save
+            changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>

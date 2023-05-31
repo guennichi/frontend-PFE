@@ -27,49 +27,53 @@ export class ChartsComponent implements OnInit {
   renderListOfMigration() {
     this.migrationService.getAllMigrations().subscribe((result: any) => {
       this.MigrationData = result.data;
-      this.total = result.data.slice(-1)
-      if (this.MigrationData) {
-        for (let i = 0; i < this.MigrationData.length - 1; i++) {
-          this.Nationality.push(this.MigrationData[i].Nationality)
-          this.NumberOfMigrants.push(Number(this.MigrationData[i].NumberOfMigrants))
-          this.Migrants.push(this.MigrationData[i].Migrants * 100)
+      if (this.MigrationData.length == 0) {
+
+      } else {
+        this.total = result.data.slice(-1)
+        if (this.MigrationData) {
+          for (let i = 0; i < this.MigrationData.length - 1; i++) {
+            this.Nationality.push(this.MigrationData[i].Nationality)
+            this.NumberOfMigrants.push(Number(this.MigrationData[i].NumberOfMigrants))
+            this.Migrants.push(this.MigrationData[i].Migrants * 100)
+          }
+          this.listBar = {
+            labels: this.Nationality.slice(0, 10),
+            datasets: [
+              {
+                label: 'Number of Migrants',
+                backgroundColor: '#f87979',
+                data: this.NumberOfMigrants.slice(0, 10)
+              }
+            ]
+          };
+          this.chartLineData = {
+            labels: this.Nationality.slice(0, 27),
+            datasets: [
+              {
+                label: 'Taux de migration %',
+                backgroundColor: 'rgba(220, 220, 220, 0.2)',
+                borderColor: 'rgba(220, 220, 220, 1)',
+                pointBackgroundColor: 'rgba(220, 220, 220, 1)',
+                pointBorderColor: '#fff',
+                data: this.Migrants.slice(0, 27)
+              }
+            ]
+          };
+          this.chartPieData = {
+            labels: this.Nationality.slice(0, 7),
+            datasets: [
+              {
+                data: this.Migrants.slice(0, 7),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#41B883', '#E46651', '#00D8FF', '#DD1B16']
+              }
+            ]
+          };
+
         }
-        this.listBar = {
-          labels: this.Nationality.slice(0, 10),
-          datasets: [
-            {
-              label: 'Number of Migrants',
-              backgroundColor: '#f87979',
-              data: this.NumberOfMigrants.slice(0, 10)
-            }
-          ]
-        };
-        this.chartLineData = {
-          labels: this.Nationality.slice(0, 27),
-          datasets: [
-            {
-              label: 'Taux de migration %',
-              backgroundColor: 'rgba(220, 220, 220, 0.2)',
-              borderColor: 'rgba(220, 220, 220, 1)',
-              pointBackgroundColor: 'rgba(220, 220, 220, 1)',
-              pointBorderColor: '#fff',
-              data: this.Migrants.slice(0, 27)
-            }
-          ]
-        };
-        this.chartPieData = {
-          labels: this.Nationality.slice(0, 7),
-          datasets: [
-            {
-              data: this.Migrants.slice(0, 7),
-              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-              hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#41B883', '#E46651', '#00D8FF', '#DD1B16']
-            }
-          ]
-        };
 
       }
-
     }, (error: any) => {
       console.log(error);
 

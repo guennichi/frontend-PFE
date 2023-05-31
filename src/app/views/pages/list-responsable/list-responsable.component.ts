@@ -91,4 +91,15 @@ export class ListResponsableComponent {
         }
       );
   }
+  changeStatus(responsableId: number): void {
+    this.responsableService.statusChange(responsableId).subscribe(
+      (response: any) => {
+        // this.toast.success(response.message);
+        this.ngOnInit(); // Met à jour la liste après la suppression
+      },
+      (error: any) => {
+        this.toast.error(error.message);
+      }
+    );
+  }
 }

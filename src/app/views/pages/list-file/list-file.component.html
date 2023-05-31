@@ -1,1 +1,20 @@
-<p>list-file works!</p>
+<h1 style="text-align:center">File Manager</h1>
+<div style="text-align: center;">
+    <form>
+        <div>
+            <input type="file" name="file" class="form-control" (change)="selectfile($event)">
+        </div>
+        <br>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="onsubmit()">Uplaod</button>
+        </div>
+    </form>
+</div>
+
+<!--<ul>
+    <li *ngFor="let file of uploadedFiles">
+        <a href="{{ file.url }}">{{ file.name }}</a>
+        <button (click)="deleteFile(file.id)">Supprimer</button>
+        <button>ADD</button>
+    </li>
+</ul>-->
