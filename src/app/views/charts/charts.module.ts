@@ -9,6 +9,7 @@ import { ChartsRoutingModule } from './charts-routing.module';
 import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WidgetsModule } from "../widgets/widgets.module";
 
 @NgModule({
   declarations: [ChartsComponent, SearchPipe],
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BadgeModule,
     DocsComponentsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    WidgetsModule
   ]
 })
 export class ChartsModule {

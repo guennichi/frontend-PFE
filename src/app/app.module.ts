@@ -54,6 +54,8 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { ResponsableComponent } from './views/responsable/responsable.component';
+import { EspaceResponsableComponent } from './views/espace-responsable/espace-responsable.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -67,7 +69,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, ResponsableComponent, EspaceResponsableComponent],
 
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@ import { ListFileComponent } from './list-file/list-file.component';
     ListLocalComponent,
     ListMigrationComponent,
     AddResponsableComponent,
-    ListFileComponent
+    ListFileComponent,
 
   ],
   imports: [

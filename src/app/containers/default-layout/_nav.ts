@@ -3,27 +3,24 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] = [
   {
     name: 'MIGRATION DATA',
-    url: '/charts',
+    url: '/dashboard',
     iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
+
   },
   {
     name: 'Components',
     title: true,
   },
   {
-    name: 'User',
+    name: 'Superviseurs',
     iconComponent: { name: 'cil-puzzle' },
     children: [
       {
-        name: 'Add user',
+        name: 'Add Superviseur',
         url: '/pages/user/addUser',
       },
       {
-        name: 'Users list',
+        name: 'Superviseur list',
         url: '/pages/user',
       },
     ],
@@ -75,13 +72,14 @@ export const navItems: INavData[] = [
     name: 'Migration',
     iconComponent: { name: 'cil-puzzle' },
     children: [
-      {
-        name: 'A propos de migration',
-        url: '/charts',
-      },
+
       {
         name: 'Migration data file',
         url: 'pages/file/listfile',
+      },
+      {
+        name: 'Statistics',
+        url: '/charts',
       },
     ],
   },
