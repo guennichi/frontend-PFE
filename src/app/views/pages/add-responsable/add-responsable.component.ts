@@ -31,7 +31,7 @@ export class AddResponsableComponent implements OnInit {
       Nom: new FormControl('', [Validators.required]),
       Prenom: new FormControl('', [Validators.required]),
       EmailRespo: new FormControl('', [Validators.required, Validators.email]),
-      num_passport: new FormControl('', [Validators.required]),
+      Password: new FormControl('', [Validators.required]),
       date_affectation: new FormControl(new Date(), [Validators.required]),
       Pays: new FormControl('', [Validators.required]),
       Locale: new FormControl('', [Validators.required]),

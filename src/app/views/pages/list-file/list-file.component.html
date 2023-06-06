@@ -1,20 +1,64 @@
-<h1 style="text-align:center">File Manager</h1>
-<div style="text-align: center;">
-    <form>
-        <div>
-            <input type="file" name="file" class="form-control" (change)="selectfile($event)">
-        </div>
-        <br>
-        <div>
-            <button type="submit" class="btn btn-primary" (click)="onsubmit()">Uplaod</button>
-        </div>
-    </form>
-</div>
+<c-row>
+    <c-col xs>
+        <c-card class="mb-4">
+            <c-card-header>File Data</c-card-header>
+            <c-card-body>
+                <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+                    <thead cTableColor="light">
+                        <tr>
+                            <th class="text-center">
+                                <svg cIcon name="cilPeople"></svg>
+                            </th>
+                            <th>Responsable</th>
+                            <th class="text-center">Size</th>
+                            <th>File Name</th>
+                            <th class="text-center">Date</th>
+                            <th>Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users; index as i">
+                            <td class="text-center">
+                                <c-avatar size="md" src="{{ user.avatar }}" status="{{ user.status }}"></c-avatar>
+                            </td>
+                            <td>
+                                <div>{{ user.name }}</div>
+                                <div class="small text-medium-emphasis text-nowrap">
 
-<!--<ul>
-    <li *ngFor="let file of uploadedFiles">
-        <a href="{{ file.url }}">{{ file.name }}</a>
-        <button (click)="deleteFile(file.id)">Supprimer</button>
-        <button>ADD</button>
-    </li>
-</ul>-->
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div>{{ user.country }}</div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-between">
+                                    <div class="float-start">
+                                        <strong>{{ user.usage }}</strong>
+                                    </div>
+                                    <div class="float-end ms-1 text-nowrap">
+                                        <small class="text-medium-emphasis">
+
+                                        </small>
+                                    </div>
+                                </div>
+                                <c-progress thin>
+                                    <c-progress-bar [value]="user.usage" color="{{ user.color }}"></c-progress-bar>
+                                </c-progress>
+                            </td>
+                            <td class="text-center">
+                                <div>{{ user.payment }}</div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger me-2"><i
+                                        class="fa-solid fa-trash text-white"></i></button>
+                                <i class="fa-solid fa-file-import fa-2xl" style="color: #1660df;"></i>
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>
